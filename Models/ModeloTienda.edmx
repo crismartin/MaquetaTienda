@@ -37,7 +37,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IdProducto" Type="int" Nullable="false" />
     <Property Name="IdPedido" Type="int" Nullable="false" />
-    <Property Name="Cantidad" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Cantidad" Type="smallint" Nullable="false" />
   </EntityType>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -75,7 +75,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdProducto" Type="Int32" Nullable="false" />
           <Property Name="IdPedido" Type="Int32" Nullable="false" />
-          <Property Name="Cantidad" Type="String" Nullable="false" />
+          <Property Name="Cantidad" Type="Int16" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>

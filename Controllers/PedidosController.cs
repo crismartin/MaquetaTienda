@@ -41,6 +41,22 @@ namespace MaquetaTienda.Controllers
             {
                 return HttpNotFound();
             }
+
+            // Devolver los productos del pedido
+            var query = from prodsPedido in db.ProductoPedido
+                        join producto in db.Productos on prodsPedido.IdProducto equals producto.Id
+                        where prodsPedido.IdPedido == id
+                        select new ProductoDTO
+                        {
+                            Id = producto.Id,
+                            Nombre = producto.Nombre,
+                            Cantidad = prodsPedido.Cantidad,
+                            Descripcion = producto.Descripcion,
+                            Precio = producto.Precio
+                        };
+
+            pedido.productos = query.ToList();
+            
             return View(pedido);
         }
 
@@ -55,7 +71,7 @@ namespace MaquetaTienda.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,IdProducto,Cantidad")] Pedido pedido)
+        public ActionResult Create([Bind(Include = "Id,Cantidad")] Pedido pedido)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +103,7 @@ namespace MaquetaTienda.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,IdProducto,Cantidad")] Pedido pedido)
+        public ActionResult Edit([Bind(Include = "Id, Fecha, NombreUsuario, Pagado, Referencia")] Pedido pedido)
         {
             if (ModelState.IsValid)
             {

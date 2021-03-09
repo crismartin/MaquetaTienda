@@ -32,26 +32,22 @@ namespace MaquetaTienda.Controllers
             pedido.Fecha = TimeSpan.Zero;
             pedido.NombreUsuario = nameUser;
             pedido.Referencia = referencePedido;
-
+            
+            db.Pedidos.Add(pedido);
+            db.SaveChanges();
 
             // guardar los productos asociados al pedido
-
-
-            /*
             foreach (Producto p in productos)
             {
-                var pedido = new Pedido();
-                pedido.IdProducto = p.Id;
-                pedido.Cantidad = 1;
-                pedido.Pagado = false;
-                pedido.Fecha = TimeSpan.Zero;
-                pedido.NombreUsuario = nameUser;
-                pedido.Referencia = referencePedido;
-                db.Pedidos.Add(pedido);
+                var productosPedido = new ProductosPedido();
+                productosPedido.IdPedido = pedido.Id;
+                productosPedido.IdProducto = p.Id;
+                productosPedido.Cantidad = p.Cantidad;
+                db.ProductoPedido.Add(productosPedido);
                 db.SaveChanges();
                 cc.Clear(); //vacio el carrito del modelo
             }
-            */
+            
             return RedirectToAction("Index", "Pedidos");
         }
     }

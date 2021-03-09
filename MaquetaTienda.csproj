@@ -218,6 +218,7 @@
     <Compile Include="Models\Producto.cs">
       <DependentUpon>ModeloTienda.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProductoDTO.cs" />
     <Compile Include="Models\ProductosPedido.cs">
       <DependentUpon>ModeloTienda.tt</DependentUpon>
     </Compile>

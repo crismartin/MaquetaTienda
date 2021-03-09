@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/09/2021 22:57:31
+-- Date Created: 03/09/2021 23:30:34
 -- Generated from EDMX file: C:\Users\cristian\Documents\MaquetaTienda\Models\ModeloTienda.edmx
 -- --------------------------------------------------
 
@@ -61,7 +61,7 @@ CREATE TABLE [dbo].[ProductoPedido] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [IdProducto] int  NOT NULL,
     [IdPedido] int  NOT NULL,
-    [Cantidad] nvarchar(max)  NOT NULL
+    [Cantidad] smallint  NOT NULL
 );
 GO
 
