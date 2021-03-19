@@ -43,23 +43,40 @@
             </th>
             <th></th>
         </tr>
-    @foreach (var item in Model.productos)
-    {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cantidad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Precio)
-        </td>
-    </tr>
-    }
+        @foreach (var item in Model.Productos)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cantidad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Precio)
+                </td>
+            </tr>
+        }
+
+
+        <tr>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+                <h4>Total</h4>
+            </td>
+            <td>
+                @{ var total = Model.Productos.Sum(x => x.Cantidad * x.Precio);}
+                <h4>@total €</h4>
+            </td>
+            <td>                
+            </td>
+        </tr>
     </table>
 </div>
 <p>

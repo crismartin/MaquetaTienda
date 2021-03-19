@@ -11,8 +11,7 @@ namespace MaquetaTienda.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
-
+    
     public partial class Pedido
     {
         public int Id { get; set; }
@@ -21,7 +20,6 @@ namespace MaquetaTienda.Models
         public bool Pagado { get; set; }
         public string Referencia { get; set; }
 
-        [NotMapped]
-        public List<ProductoDTO> productos { get; set; }
+        public List<ProductoDTO> Productos { get; set; }
     }
 }

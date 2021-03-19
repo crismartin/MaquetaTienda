@@ -7,6 +7,6 @@ namespace MaquetaTienda.Models
 {
     public class ProductoCarrito: Producto
     {
-        public short CantidadCarrito { get; set; }        
+        public short Cantidad { get; set; }        
     }
 }

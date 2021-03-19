@@ -16,7 +16,7 @@ namespace MaquetaTienda.Models
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
-        public short Cantidad { get; set; }
+        public short Stock { get; set; }
         public string Descripcion { get; set; }
         public double Precio { get; set; }
     }

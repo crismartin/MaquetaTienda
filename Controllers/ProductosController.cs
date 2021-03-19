@@ -59,7 +59,7 @@ namespace MaquetaTienda.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombre,Cantidad,Descripcion,Precio")] Producto producto)
+        public ActionResult Create([Bind(Include = "Id,Nombre,Stock,Descripcion,Precio")] Producto producto)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace MaquetaTienda.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nombre,Cantidad,Descripcion,Precio")] Producto producto)
+        public ActionResult Edit([Bind(Include = "Id,Nombre,Stock,Descripcion,Precio")] Producto producto)
         {
             if (ModelState.IsValid)
             {

@@ -49,13 +49,13 @@ namespace MaquetaTienda.Controllers
                         select new ProductoDTO
                         {
                             Id = producto.Id,
-                            Nombre = producto.Nombre,
-                            Cantidad = prodsPedido.Cantidad,
+                            Nombre = producto.Nombre,                            
                             Descripcion = producto.Descripcion,
+                            Cantidad = prodsPedido.Cantidad,
                             Precio = producto.Precio
                         };
 
-            pedido.productos = query.ToList();
+            pedido.Productos = query.ToList();
             
             return View(pedido);
         }

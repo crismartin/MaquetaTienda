@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Security.Principal;
 using System.Text;
 using System.Web;
@@ -42,7 +43,7 @@ namespace MaquetaTienda.Controllers
                 var productosPedido = new ProductosPedido();
                 productosPedido.IdPedido = pedido.Id;
                 productosPedido.IdProducto = p.Id;
-                productosPedido.Cantidad = p.CantidadCarrito;
+                productosPedido.Cantidad = p.Cantidad;
                 db.ProductoPedido.Add(productosPedido);
                 db.SaveChanges();
                 cc.Clear(); //vacio el carrito del modelo
@@ -58,6 +59,21 @@ namespace MaquetaTienda.Controllers
             cc.RemoveProducto(producto);
 
             return RedirectToAction("Index");
+        }
+
+        // GET: Productos/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Producto producto = db.Productos.Find(id);
+            if (producto == null)
+            {
+                return HttpNotFound();
+            }
+            return RedirectToAction("Details", "Productos", new { id = producto.Id });
         }
     }
 }

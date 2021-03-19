@@ -23,17 +23,17 @@ namespace MaquetaTienda.Models
                 var prodFounded = listaProds.FirstOrDefault(x => x.Id == producto.Id);
                 if (prodFounded != null)
                 {
-                    prodFounded.CantidadCarrito = (short)((short)prodFounded.CantidadCarrito + 1);
+                    prodFounded.Cantidad = (short)((short)prodFounded.Cantidad + 1);
                 }
                 else
                 {
-                    prodCart.CantidadCarrito = 1;
+                    prodCart.Cantidad = 1;
                     this.Add(prodCart);
                 }
             }
             else
             {
-                prodCart.CantidadCarrito = 1;
+                prodCart.Cantidad = 1;
                 this.Add(prodCart);
             }
 
@@ -46,9 +46,9 @@ namespace MaquetaTienda.Models
                 List<ProductoCarrito> listaProds = this.ToList();
                 // comprobar que el producto existe en el carrito
                 var prodFounded = listaProds.FirstOrDefault(x => x.Id == producto.Id);
-                if (prodFounded.CantidadCarrito > 1)
+                if (prodFounded.Cantidad > 1)
                 {
-                    prodFounded.CantidadCarrito = (short)((short)prodFounded.CantidadCarrito - 1);
+                    prodFounded.Cantidad = (short)((short)prodFounded.Cantidad - 1);
                 }
                 else
                 {

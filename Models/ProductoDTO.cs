@@ -7,5 +7,6 @@ namespace MaquetaTienda.Models
 {
     public class ProductoDTO: Producto
     {
+        public short Cantidad { get; set; }
     }
 }
