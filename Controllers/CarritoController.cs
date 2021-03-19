@@ -22,7 +22,7 @@ namespace MaquetaTienda.Controllers
 
         public ActionResult Save(CarritoCompra cc)
         {
-            List<Producto> productos = cc.ToList();
+            List<ProductoCarrito> productos = cc.ToList();
             string nameUser = HttpContext.User.Identity.Name;
             string referencePedido = RandomGenerator.RandomReferenceId();
 
@@ -37,18 +37,27 @@ namespace MaquetaTienda.Controllers
             db.SaveChanges();
 
             // guardar los productos asociados al pedido
-            foreach (Producto p in productos)
+            foreach (ProductoCarrito p in productos)
             {
                 var productosPedido = new ProductosPedido();
                 productosPedido.IdPedido = pedido.Id;
                 productosPedido.IdProducto = p.Id;
-                productosPedido.Cantidad = p.Cantidad;
+                productosPedido.Cantidad = p.CantidadCarrito;
                 db.ProductoPedido.Add(productosPedido);
                 db.SaveChanges();
                 cc.Clear(); //vacio el carrito del modelo
             }
             
             return RedirectToAction("Index", "Pedidos");
+        }
+
+        public ActionResult Delete(int id, CarritoCompra cc)
+        {
+            // buscar el producto con el id
+            Producto producto = db.Productos.Find(id);
+            cc.RemoveProducto(producto);
+
+            return RedirectToAction("Index");
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MaquetaTienda.Models.Producto>
+﻿@model IEnumerable<MaquetaTienda.Models.ProductoCarrito>
 
 @{
     ViewBag.Title = "Index";
@@ -15,7 +15,7 @@
             @Html.DisplayNameFor(model => model.Nombre)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Cantidad)
+            @Html.DisplayNameFor(model => model.CantidadCarrito)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Descripcion)
@@ -33,7 +33,7 @@
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Cantidad)
+                @Html.DisplayFor(modelItem => item.CantidadCarrito)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Descripcion)
@@ -41,8 +41,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Precio)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            <td>                
                 @Html.ActionLink("Details", "Details", new { id = item.Id }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.Id })
             </td>
