@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/19/2021 17:53:15
--- Generated from EDMX file: C:\Users\cristian\Documents\MaquetaTienda\Models\ModeloTienda.edmx
+-- Date Created: 04/01/2021 17:36:11
+-- Generated from EDMX file: D:\MasterUniversitario\IngeneriaWeb\NET\workspace\MaquetaTienda\MaquetaTienda\Models\ModeloTienda.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -22,14 +22,14 @@ GO
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[Productos]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Productos];
-GO
 IF OBJECT_ID(N'[dbo].[Pedidos]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Pedidos];
 GO
 IF OBJECT_ID(N'[dbo].[ProductoPedido]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ProductoPedido];
+GO
+IF OBJECT_ID(N'[dbo].[Productos]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Productos];
 GO
 
 -- --------------------------------------------------
@@ -49,7 +49,7 @@ GO
 -- Creating table 'Pedidos'
 CREATE TABLE [dbo].[Pedidos] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [Fecha] time  NOT NULL,
+    [Fecha] datetime  NOT NULL,
     [NombreUsuario] nvarchar(max)  NOT NULL,
     [Pagado] bit  NOT NULL,
     [Referencia] nvarchar(max)  NOT NULL

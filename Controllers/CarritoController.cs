@@ -30,7 +30,10 @@ namespace MaquetaTienda.Controllers
             // crear pedido
             var pedido = new Pedido();
             pedido.Pagado = false;
-            pedido.Fecha = TimeSpan.Zero;
+            var now = DateTime.Now;
+            var date = new DateTime(now.Year, now.Month, now.Day,
+                                    now.Hour, now.Minute, now.Second);
+            pedido.Fecha = date;
             pedido.NombreUsuario = nameUser;
             pedido.Referencia = referencePedido;
             
@@ -45,6 +48,11 @@ namespace MaquetaTienda.Controllers
                 productosPedido.IdProducto = p.Id;
                 productosPedido.Cantidad = p.Cantidad;
                 db.ProductoPedido.Add(productosPedido);
+
+                // disminuir el stock del producto
+                var productoDb = db.Productos.Find(p.Id);
+                productoDb.Stock = (short)((short) productoDb.Stock - p.Cantidad);
+
                 db.SaveChanges();
                 cc.Clear(); //vacio el carrito del modelo
             }

@@ -19,11 +19,14 @@ namespace MaquetaTienda.Models
 
             if (listaProds.Count > 0)
             {
-                //  tengo que buscar el producto y aumentar 1 a la CantidadCarrito
+                //  tengo que buscar el producto y aumentar 1 a la Cantidad
                 var prodFounded = listaProds.FirstOrDefault(x => x.Id == producto.Id);
                 if (prodFounded != null)
                 {
-                    prodFounded.Cantidad = (short)((short)prodFounded.Cantidad + 1);
+                    if(prodFounded.Cantidad < producto.Stock)
+                    {
+                        prodFounded.Cantidad = (short)((short)prodFounded.Cantidad + 1);
+                    }                    
                 }
                 else
                 {
