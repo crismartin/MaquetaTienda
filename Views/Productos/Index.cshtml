@@ -27,26 +27,34 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Stock)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Precio)
-        </td>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Nombre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Stock)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Descripcion)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Precio)
+    </td>
+    @if (item.Stock > 0)
+    {
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
             @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id }) | 
-            @Html.ActionLink("Agregar al carrito", "AddCart",  new { id = item.Id })
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+            @Html.ActionLink("Agregar al carrito", "AddCart", new { id = item.Id })
         </td>
-    </tr>
+    }
+    else
+    {
+        <td>Producto agotado</td>
+    }
+
+</tr>
 }
 
 </table>
